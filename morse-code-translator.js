@@ -8,4 +8,3 @@ able to translate based on user input from the DOM.*/
 4. ** extension – Should receive inputs from the HTML
 */
 
-console.log("hello")
