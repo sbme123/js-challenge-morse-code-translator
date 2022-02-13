@@ -21,8 +21,341 @@ able to translate based on user input from the DOM.*/
 
 /* STARTING THE MORSE CODE TRANSLATER */
 
-const input = document.querySelector(".input")
-// input.value = "Hello"
 
-const output = document.querySelector(".output")
-output.innerHTML = "Test"
+
+class MorseCodeTranslator {
+    constructor (character) {
+        this.character = character
+    }
+
+    translateEnglishToMorseCode() {
+        if (this.character === "A") 
+        return '.-'
+        if (this.character === "B") 
+        return '-...'
+    }
+
+}
+
+const translation1 = new MorseCodeTranslator("A")
+const translation2 = new MorseCodeTranslator("B")
+
+console.log(translation1.translateEnglishToMorseCode())
+console.log(translation2.translateEnglishToMorseCode())
+
+class Test1 extends MorseCodeTranslator {
+    constructor(character, string) {
+    super(character)
+    this.string = ""
+    }
+
+    translateEnglishToMorseCode2() {
+        const encode = (text) => {
+            let reference = {
+                'a': '.-',
+                'b': '-...',
+                'c': '-.-.',
+                'd': '-..',
+                'e': '.>',
+                'f': '..-.',
+                'g': '--.',
+                'h': '....',
+                'i': '..',
+                'j': '.---',
+                'k': '-.-',
+                'l': '.-..',
+                'm': '--',
+                'n': '-.',
+                'o': '---',
+                'p': '.--.',
+                'q': '--.-',
+                'r': '.-.',
+                's': '...',
+                't': '-',
+                'u': '..-',
+                'v': '...-',
+                'w': '.--',
+                'x': '-..-',
+                'y': '-.--',
+                'z': '--..',
+                '1': '.----',
+                '2': '..---',
+                '3': '...--',
+                '4': '....-',
+                '5': '.....',
+                '6': '-....',
+                '7': '--...',
+                '8': '---..',
+                '9': '----.',
+                '0': '-----',
+                ' ': "&nsp"
+            }
+        
+            // console.log(reference["e"])
+            let encodeTxt = text
+            .toLowerCase()
+            .split("")
+            .map(a => reference[a])
+            .join(" ")
+        
+            return encodeTxt
+        }
+    }
+
+}
+
+const translation3 = new Test1("b")
+
+console.log(translation3.translateEnglishToMorseCode2())
+
+/*
+
+// LINK THE INPUT FIELD AND OUTPUT FIELD TO THE DOCUMENT
+const inputCharacters = document.querySelector(".input")
+// input.value = "Test"
+const outputCharacters = document.querySelector(".output")
+// output.innerHTML = "Test"
+
+// OBJECTs CONTAINING THE TRANSLATIONS FOR ENGLISH TO MORSE AND MORSE CODE TO ENGLISH
+const englishToMorseCode = {
+    "A": ".-",
+    "B": "-...",
+    "C": "-.-.",
+    "D": "-..",
+    "E": ".",
+    "F": "..-.",
+    "G": "--.",
+    "H": "....",
+    "I": "..",
+    "J": ".---",
+    "K": "-.-",
+    "L": ".-..",
+    "M": "--",
+    "N": "-.",
+    "O": "---",
+    "P": ".--.",
+    "Q": "--.-",
+    "R": ".-.",
+    "S": "...",
+    "T": "-",
+    "U": "..-",
+    "W": ".--",
+    "X": "-..-",
+    "Y": "-.--",
+    "Z": "--.."
+ }
+
+const morseCodeToEnglish = { 
+    '.-':     'A',
+    '-...':   'B',
+    '-.-.':   'C',
+    '-..':    'D',
+    '.':      'E',
+    '..-.':   'F',
+    '--.':    'G',
+    '....':   'H',
+    '..':     'I',
+    '.---':   'J',
+    '-.-':    'K',
+    '.-..':   'L',
+    '--':     'M',
+    '-.':     'N',
+    '---':    'O',
+    '.--.':   'P',
+    '--.-':   'Q',
+    '.-.':    'R',
+    '...':    'S',
+    '-':      'T',
+    '..-':    'U',
+    '...-':   'V',
+    '.--':    'W',
+    '-..-':   'X',
+    '-.--':   'Y',
+    '--..':   'Z',
+    
+  }
+
+
+
+
+// CREATE A CLASS TO TRANSLATE THE MORSE CODE
+
+class EnglishToMorseCode {
+    constructor(english, morse) {
+
+    this.englishInput = english
+    this.morseCodeOutput = morse
+    
+    }
+
+    // Need to add a method for the translation
+
+    
+
+}
+
+
+    
+    
+    
+    /*
+
+    document.getElementById("translate").addEventListener("click", () => {
+
+    const inputCharacters = document.querySelector(".input")
+    const outputCharacters = document.querySelector(".output")
+
+    input = inputCharacters.value;
+    outputCharacters.value = "";
+    output = "";
+
+       for(let i = 0; i < input.length; i++){
+		switch(input[i]) {
+			case "a":
+			output += ".- ";
+			break;
+			case "b":
+			output += "-... ";
+			break;
+			case "c":
+			output += ".-.- ";
+			break;
+			case "d":
+			output += "-.. ";
+			break;
+			case "e":
+			output += ". ";
+			break;
+			case "f":
+			output += "..-. ";
+			break;
+			case "g":
+			output += "--. ";
+			break;
+			case "h":
+			output += ".... ";
+			break;
+			case "i":
+			output += ".. ";
+			break;
+			case "j":
+			output += ".--- ";
+			break;
+			case "k":
+			output += "-.- ";
+			break;
+			case "l":
+			output += ".-.. ";
+			break;
+			case "m":
+			output += "-- ";
+			break;
+			case "n":
+			output += "-. ";
+			break;
+			case "o":
+			output += "--- ";
+			break;
+			case "p":
+			output += ".--. ";
+			break;
+			case "q":
+			output += "--.- ";
+			break;
+			case "r":
+			output += ".-. ";
+			break;
+			case "s":
+			output += "... ";
+			break;
+			case "t":
+			output += "- ";
+			break;
+			case "u":
+			output += "..- ";
+			break;
+			case "v":
+			output += "...- ";
+			break;
+			case "w":
+			output += ".-- ";
+			break;
+			case "x":
+			output += "-..- ";
+			break;
+			case "y":
+			output += "-.-- ";
+			break;
+			case "z":
+			output += "--.. ";
+			break;
+			case "0":
+			output += "----- ";
+			break;
+			case "1":
+			output += ".---- ";
+			break;
+			case "2":
+			output += "..--- ";
+			break;
+			case "3":
+			output += "...-- ";
+			break;
+			case "4":
+			output += "....- ";
+			break;
+			case "5":
+			output += "..... ";
+			break;
+			case "6":
+			output += "-.... ";
+			break;
+			case "7":
+			output += "--... ";
+			break;
+			case "8":
+			output += "---.. ";
+			break;
+			case "9":
+			output += "----. ";
+			break;
+			case ",":
+			output += "--..-- ";
+			break;
+			case ".":
+			output += ".-.-.- ";
+			break;
+			case "?":
+			output += "..--.. ";
+			break;
+			case "\'":
+			output += ".----. ";
+			break;
+			case "/":
+			output += "-..-. ";
+			break;
+			case "\"":
+			output += ".-..-. ";
+			break;
+			case "(":
+			output += "-.--.- ";
+			break;
+			case ")":
+			output += "-.--.- ";
+			break;
+			case "=":
+			output += "-...- ";
+			break;
+			case ":":
+			output += "---... ";
+			break;
+		}
+		outputCharacters.value = output;
+	}
+
+    })
+    
+}
+}
+
+    */
